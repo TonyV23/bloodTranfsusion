@@ -1,5 +1,7 @@
 package Actors;
 
+import java.util.ArrayList;
+
 public class Receveur {
     private String nom ;
     private String prenom;
@@ -13,7 +15,10 @@ public class Receveur {
         this.prenom = prenom;
         this.sexe = sexe;
         this.groupeSanguin = groupeSanguin;
+        liste_des_receveurs.add(this);
     }
+
+    public static ArrayList<Receveur> liste_des_receveurs = new ArrayList<>();
 
     // le constructeur vide de la classe Receveur
 
@@ -51,5 +56,53 @@ public class Receveur {
 
     public void setGroupeSanguin(String groupeSanguin) {
         this.groupeSanguin = groupeSanguin;
+    }
+
+    // les methodes de la classe
+
+    public static void EnregistrerDonneur(){
+        new Donneur(InputOutput.Io.setString("\nNom du Receveur : "),InputOutput.Io.setString("\nPrenom du Receveur : "),
+                InputOutput.Io.setString("\nSexe du Receveur : "),InputOutput.Io.setString("\nGroupe sanguin du Receveur : "));
+        System.out.print("\n******* Le Receveur a été enregistré *******\n");
+    }
+
+    public static void AfficherDonneur(){
+        if (!liste_des_receveurs.isEmpty()){
+            System.err.print("\n******* LISTE DE TOUS LES RECEVEURS *******\n");
+            for (int i = 0; i < liste_des_receveurs.size(); i++) {
+                System.out.print(
+                        i+1+">>>>>Nom du Receveur :"+liste_des_receveurs.get(i).getNom()+"\t"+
+                                "Prenom du Receveur :"+liste_des_receveurs.get(i).getPrenom()+"\t"+
+                                "Groupe Sanguin :"+liste_des_receveurs.get(i).getGroupeSanguin()+"\n"
+                );
+            }
+        }else
+            System.err.print("\n******* Erreur Aucun Receveur n'a été enregistré *******\n");
+    }
+
+    public static void modifierDonneur(){
+        if (!liste_des_receveurs.isEmpty()){
+            System.err.print("\n******* LISTE DE TOUS LES RECEVEURS *******\n");
+            AfficherDonneur();
+            liste_des_receveurs.set(InputOutput.Io.setINT("Numero du Receveur à modifier :")-1,
+                    new Receveur(InputOutput.Io.setString("\nNom du Receveur : "),InputOutput.Io.setString("\nPrenom du Receveur : "),
+                            InputOutput.Io.setString("\nSexe du Receveur : "),InputOutput.Io.setString("\nGroupe sanguin du Receveur : ")));
+            System.err.print("\n******* LISTE DE TOUS LES RECEVEURS MISE A JOUR *******\n");
+            liste_des_receveurs.remove(liste_des_receveurs.size()-1);
+            AfficherDonneur();
+        }else
+            System.err.print("\n******* Erreur Aucun Receveur n'a été enregistré *******\n");
+
+    }
+
+    public static void supprimerDonneur(){
+        if (!liste_des_receveurs.isEmpty()){
+            System.err.print("\n******* LISTE DE TOUS LES RECEVEURS *******\n");
+            AfficherDonneur();
+            liste_des_receveurs.remove(InputOutput.Io.setINT("Numero du Receveur à supprimer :")-1);
+            System.err.print("\n******* LISTE DE TOUS LES RECEVEURS MISE A JOUR *******\n");
+            AfficherDonneur();
+        }else
+            System.err.print("\n******* Erreur Aucun Receveur n'a été enregistré *******\n");
     }
 }
