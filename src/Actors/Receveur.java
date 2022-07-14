@@ -66,7 +66,7 @@ public class Receveur {
         System.out.print("\n******* Le Receveur a été enregistré *******\n");
     }
 
-    public static void AfficherDonneur(){
+    public static void AfficherReceveur(){
         if (!liste_des_receveurs.isEmpty()){
             System.err.print("\n******* LISTE DE TOUS LES RECEVEURS *******\n");
             for (int i = 0; i < liste_des_receveurs.size(); i++) {
@@ -80,28 +80,28 @@ public class Receveur {
             System.err.print("\n******* Erreur Aucun Receveur n'a été enregistré *******\n");
     }
 
-    public static void modifierDonneur(){
+    public static void modifierReceveur(){
         if (!liste_des_receveurs.isEmpty()){
             System.err.print("\n******* LISTE DE TOUS LES RECEVEURS *******\n");
-            AfficherDonneur();
+            AfficherReceveur();
             liste_des_receveurs.set(InputOutput.Io.setINT("Numero du Receveur à modifier :")-1,
                     new Receveur(InputOutput.Io.setString("\nNom du Receveur : "),InputOutput.Io.setString("\nPrenom du Receveur : "),
                             InputOutput.Io.setString("\nSexe du Receveur : "),InputOutput.Io.setString("\nGroupe sanguin du Receveur : ")));
             System.err.print("\n******* LISTE DE TOUS LES RECEVEURS MISE A JOUR *******\n");
             liste_des_receveurs.remove(liste_des_receveurs.size()-1);
-            AfficherDonneur();
+            AfficherReceveur();
         }else
             System.err.print("\n******* Erreur Aucun Receveur n'a été enregistré *******\n");
 
     }
 
-    public static void supprimerDonneur(){
+    public static void supprimerReceveur(){
         if (!liste_des_receveurs.isEmpty()){
             System.err.print("\n******* LISTE DE TOUS LES RECEVEURS *******\n");
-            AfficherDonneur();
+            AfficherReceveur();
             liste_des_receveurs.remove(InputOutput.Io.setINT("Numero du Receveur à supprimer :")-1);
             System.err.print("\n******* LISTE DE TOUS LES RECEVEURS MISE A JOUR *******\n");
-            AfficherDonneur();
+            AfficherReceveur();
         }else
             System.err.print("\n******* Erreur Aucun Receveur n'a été enregistré *******\n");
     }
