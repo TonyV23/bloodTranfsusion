@@ -1,5 +1,7 @@
 package Actors;
 
+import Main.Run;
+
 import java.util.ArrayList;
 
 public class Donneur {
@@ -63,7 +65,7 @@ public class Donneur {
 
     public static void EnregistrerDonneur(){
         new Donneur(InputOutput.Io.setString("\nNom du donneur : "),InputOutput.Io.setString("\nPrenom du donneur : "),
-                InputOutput.Io.setString("\nSexe du donneur : "),InputOutput.Io.setString("\nGroupe sanguin du donneur : "));
+                Run.saisirEtVerificationSexe(), Run.saisirEtVerificationGroupeSanguin());
         System.out.print("\n******* Le Donneur a été enregistré *******\n");
     }
 
@@ -72,9 +74,9 @@ public class Donneur {
             System.err.print("\n******* LISTE DE TOUS LES DONNEURS *******\n");
             for (int i = 0; i < liste_des_donneurs.size(); i++) {
                 System.out.print(
-                        i+1+">>>>>Nom du Donneur :"+liste_des_donneurs.get(i).getNom()+"\t"+
+                        i+1+"  Nom du Donneur :"+liste_des_donneurs.get(i).getNom()+"\t"+
                                 "Prenom du Donneur :"+liste_des_donneurs.get(i).getPrenom()+"\t"+
-                                "Groupe Sanguin :"+liste_des_donneurs.get(i).getGroupeSanguin()+"\n"
+                                "Groupe Sanguin :"+liste_des_donneurs.get(i).getGroupeSanguin()+"\n"+"\n"
                 );
             }
         }else
@@ -87,7 +89,7 @@ public class Donneur {
             AfficherDonneur();
             liste_des_donneurs.set(InputOutput.Io.setINT("Numero du donneur à modifier :")-1,
                     new Donneur(InputOutput.Io.setString("\nNom du donneur : "),InputOutput.Io.setString("\nPrenom du donneur : "),
-                            InputOutput.Io.setString("\nSexe du donneur : "),InputOutput.Io.setString("\nGroupe sanguin du donneur : ")));
+                            Run.saisirEtVerificationSexe(), Run.saisirEtVerificationGroupeSanguin()));
             System.err.print("\n******* LISTE DE TOUS LES DONNEURS MISE A JOUR *******\n");
             liste_des_donneurs.remove(liste_des_donneurs.size()-1);
             AfficherDonneur();

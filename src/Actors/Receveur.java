@@ -1,5 +1,7 @@
 package Actors;
 
+import Main.Run;
+
 import java.util.ArrayList;
 
 public class Receveur {
@@ -60,9 +62,9 @@ public class Receveur {
 
     // les methodes de la classe
 
-    public static void EnregistrerDonneur(){
+    public static void EnregistrerReceveur(){
         new Donneur(InputOutput.Io.setString("\nNom du Receveur : "),InputOutput.Io.setString("\nPrenom du Receveur : "),
-                InputOutput.Io.setString("\nSexe du Receveur : "),InputOutput.Io.setString("\nGroupe sanguin du Receveur : "));
+                Run.saisirEtVerificationSexe(), Run.saisirEtVerificationGroupeSanguin());
         System.out.print("\n******* Le Receveur a été enregistré *******\n");
     }
 
@@ -71,9 +73,9 @@ public class Receveur {
             System.err.print("\n******* LISTE DE TOUS LES RECEVEURS *******\n");
             for (int i = 0; i < liste_des_receveurs.size(); i++) {
                 System.out.print(
-                        i+1+">>>>>Nom du Receveur :"+liste_des_receveurs.get(i).getNom()+"\t"+
+                        i+1+"  Nom du Receveur :"+liste_des_receveurs.get(i).getNom()+"\t"+
                                 "Prenom du Receveur :"+liste_des_receveurs.get(i).getPrenom()+"\t"+
-                                "Groupe Sanguin :"+liste_des_receveurs.get(i).getGroupeSanguin()+"\n"
+                                "Groupe Sanguin :"+liste_des_receveurs.get(i).getGroupeSanguin()+"\n"+"\n"
                 );
             }
         }else
@@ -86,7 +88,7 @@ public class Receveur {
             AfficherReceveur();
             liste_des_receveurs.set(InputOutput.Io.setINT("Numero du Receveur à modifier :")-1,
                     new Receveur(InputOutput.Io.setString("\nNom du Receveur : "),InputOutput.Io.setString("\nPrenom du Receveur : "),
-                            InputOutput.Io.setString("\nSexe du Receveur : "),InputOutput.Io.setString("\nGroupe sanguin du Receveur : ")));
+                            Run.saisirEtVerificationSexe(), Run.saisirEtVerificationGroupeSanguin()));
             System.err.print("\n******* LISTE DE TOUS LES RECEVEURS MISE A JOUR *******\n");
             liste_des_receveurs.remove(liste_des_receveurs.size()-1);
             AfficherReceveur();
